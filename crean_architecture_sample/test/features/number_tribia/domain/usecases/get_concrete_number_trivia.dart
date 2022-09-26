@@ -9,8 +9,8 @@ class MockNumberTriviaRepository extends Mock
     implements NumberTriviaRepository {}
 
 void main() {
-  GetConcreteNumberTrivia usecase;
-  MockNumberTriviaRepository mockNumberTriviaRepository;
+  late GetConcreteNumberTrivia usecase;
+  late MockNumberTriviaRepository mockNumberTriviaRepository;
 
   final tNumber = 1;
   final tNumberTrivia = NumberTrivia(text: 'test', number: 1);
@@ -24,7 +24,7 @@ void main() {
     // arrange
     // mocなので、getConcreteNumberTriviaにいれる数字はなんでもいい（any）
     // EitherのRight(成功)を返却したいので、Right(tNumberTrivia)を返却する
-    when(mockNumberTriviaRepository.getConcreteNumberTrivia(any))
+    when(mockNumberTriviaRepository.getConcreteNumberTrivia(tNumber))
         .thenAnswer((_) async => Right(tNumberTrivia));
 
     // act
